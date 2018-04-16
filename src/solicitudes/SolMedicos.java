@@ -5,15 +5,30 @@
  */
 package solicitudes;
 
+import entidades.Medicos;
+import java.util.ArrayList;
+import java.util.List;
+import validaciones.Validacion;
+
 /**
  *
  * @author luisd
  */
 public class SolMedicos extends Solicitudes{
+    public static List<Medicos> medicos = new ArrayList<>();
+    private Validacion validaciones;
 
+    public SolMedicos() {
+        validaciones = new Validacion();
+    }
+    
     @Override
     public void registrar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean valido = false;
+        String nombre = "";
+        String apellidos = "";
+        String especialidad = "";
+        
     }
 
     @Override
