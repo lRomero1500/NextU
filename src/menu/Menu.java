@@ -99,11 +99,8 @@ public class Menu {
                         solpac.modificar();
                     break;
                 case 4:
-                    break;
-                case 5:
-                    break;
-                default:
-
+                    if(op1==1)
+                        solpac.eliminar();
                     break;
             }
             break;

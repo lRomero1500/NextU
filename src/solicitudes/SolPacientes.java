@@ -115,15 +115,15 @@ public class SolPacientes extends Solicitudes {
                 + listar());
         if (sel == "" || !validaciones.valida(sel, 2)) {
             if (sel == "") {
-                JOptionPane.showMessageDialog(null, "Debe ingresar un edad");
+                JOptionPane.showMessageDialog(null, "Debe ingresar un identificador");
             } else if (!validaciones.valida(sel, 2)) {
-                JOptionPane.showMessageDialog(null, "La edad debe contener solo numeros");
+                JOptionPane.showMessageDialog(null, "el identificador es numerico, porfavor ingrese un identificador numerico");
             }
         } else {
             int index = 0;
             boolean existe = false;
             for (Pacientes paciente : pacientes) {
-                String id=paciente.getIdentificación();
+                String id = paciente.getIdentificación();
                 if (paciente.getIdentificación().equals(sel)) {
                     index = pacientes.indexOf(paciente);
                     existe = true;
@@ -205,7 +205,31 @@ public class SolPacientes extends Solicitudes {
 
     @Override
     public void eliminar() {
-
+        String sel = JOptionPane.showInputDialog("*****Ingrese el identificador del paciente a Eliminar*****\n"
+                + listar());
+        if (sel == "" || !validaciones.valida(sel, 2)) {
+            if (sel == "") {
+                JOptionPane.showMessageDialog(null, "Debe ingresar un identificador");
+            } else if (!validaciones.valida(sel, 2)) {
+                JOptionPane.showMessageDialog(null, "el identificador es numerico, porfavor ingrese un identificador numerico");
+            }
+        } else {
+            int index = 0;
+            boolean existe = false;
+            for (Pacientes paciente : pacientes) {
+                String id = paciente.getIdentificación();
+                if (paciente.getIdentificación().equals(sel)) {
+                    index = pacientes.indexOf(paciente);
+                    existe = true;
+                }
+            }
+            if (!existe) {
+                JOptionPane.showMessageDialog(null, "Paciente seleccionado no existe");
+            } else {
+                pacientes.remove(index);
+            }
+            JOptionPane.showMessageDialog(null, "Paciente eliminado correctamente");
+        }
     }
 
 }
