@@ -8,42 +8,184 @@ package solicitudes;
 import entidades.Medicos;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import validaciones.Validacion;
 
 /**
  *
  * @author luisd
  */
-public class SolMedicos extends Solicitudes{
+public class SolMedicos extends Solicitudes {
+
     public static List<Medicos> medicos = new ArrayList<>();
     private Validacion validaciones;
 
     public SolMedicos() {
         validaciones = new Validacion();
     }
-    
+
     @Override
     public void registrar() {
         boolean valido = false;
         String nombre = "";
         String apellidos = "";
         String especialidad = "";
-        
+        do {
+            nombre = JOptionPane.showInputDialog("*****Registro de nuevos medicos*****\n\n"
+                    + "Ingrese Nombre del paciente");
+            if (nombre == "" || validaciones.valida(nombre, 1)) {
+                if (nombre == "") {
+                    JOptionPane.showMessageDialog(null, "Debe ingresar un nombre");
+                } else if (validaciones.valida(nombre, 1)) {
+                    JOptionPane.showMessageDialog(null, "El nombre debe contener solo letras");
+                }
+                valido = false;
+            } else {
+                valido = true;
+            }
+        } while (!valido);
+        do {
+            apellidos = JOptionPane.showInputDialog("*****Registro de nuevos medicos*****\n\n"
+                    + "Ingrese Apellido del paciente");
+            if (apellidos == "" || validaciones.valida(apellidos, 1)) {
+                if (apellidos == "") {
+                    JOptionPane.showMessageDialog(null, "Debe ingresar un apellido");
+                } else if (validaciones.valida(apellidos, 1)) {
+                    JOptionPane.showMessageDialog(null, "El apellido debe contener solo letras");
+                }
+                valido = false;
+            } else {
+                valido = true;
+            }
+        } while (!valido);
+        do {
+            especialidad = JOptionPane.showInputDialog("*****Registro de nuevos medicos*****\n\n"
+                    + "Ingrese Genero del paciente");
+            if (especialidad == "" || validaciones.valida(especialidad, 1)) {
+                if (especialidad == "") {
+                    JOptionPane.showMessageDialog(null, "Debe ingresar una especialidad");
+                } else if (validaciones.valida(especialidad, 1)) {
+                    JOptionPane.showMessageDialog(null, "La especialidad debe contener solo letras");
+                }
+                valido = false;
+            } else {
+                valido = true;
+            }
+        } while (!valido);
+
+        medicos.add(new Medicos(String.valueOf(medicos.size() + 1), nombre, apellidos, especialidad));
+        JOptionPane.showMessageDialog(null, "Medico creado correctamente");
+
     }
 
     @Override
     public void mostrar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        JOptionPane.showMessageDialog(null, listar());
+    }
+
+    private String listar() {
+        String lstpac = "";
+        for (Medicos medico : medicos) {
+            lstpac += medico.getPacienteLista();
+        }
+        return lstpac;
     }
 
     @Override
     public void modificar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sel = JOptionPane.showInputDialog("*****Ingrese el identificador del paciente a modificar*****\n"
+                + listar());
+        if (sel == "" || !validaciones.valida(sel, 2)) {
+            if (sel == "") {
+                JOptionPane.showMessageDialog(null, "Debe ingresar un identificador");
+            } else if (!validaciones.valida(sel, 2)) {
+                JOptionPane.showMessageDialog(null, "el identificador es numerico, porfavor ingrese un identificador numerico");
+            }
+        } else {
+            int index = 0;
+            boolean existe = false;
+            for (Medicos medico : medicos) {
+                String id = medico.getIdentificación();
+                if (medico.getIdentificación().equals(sel)) {
+                    index = medicos.indexOf(medico);
+                    existe = true;
+                }
+            }
+            if (!existe) {
+                JOptionPane.showMessageDialog(null, "Paciente seleccionado no existe");
+            } else {
+                boolean valido = false;
+                String nombre = "";
+                String apellidos = "";
+                String genero = "";
+                String edad = "";
+                do {
+                    nombre = JOptionPane.showInputDialog("*****Edicion de pacientes*****\n\n"
+                            + "Ingrese Nombre del paciente");
+                    if (nombre == "" || validaciones.valida(nombre, 1)) {
+                        if (nombre == "") {
+                            JOptionPane.showMessageDialog(null, "Debe ingresar un nombre");
+                        } else if (validaciones.valida(nombre, 1)) {
+                            JOptionPane.showMessageDialog(null, "El nombre debe contener solo letras");
+                        }
+                        valido = false;
+                    } else {
+                        valido = true;
+                    }
+                } while (!valido);
+                do {
+                    apellidos = JOptionPane.showInputDialog("*****Edicion de pacientes*****\n\n"
+                            + "Ingrese Apellido del paciente");
+                    if (apellidos == "" || validaciones.valida(apellidos, 1)) {
+                        if (apellidos == "") {
+                            JOptionPane.showMessageDialog(null, "Debe ingresar un apellido");
+                        } else if (validaciones.valida(apellidos, 1)) {
+                            JOptionPane.showMessageDialog(null, "El apellido debe contener solo letras");
+                        }
+                        valido = false;
+                    } else {
+                        valido = true;
+                    }
+                } while (!valido);
+                do {
+                    genero = JOptionPane.showInputDialog("*****Edicion de pacientes*****\n\n"
+                            + "Ingrese Genero del paciente");
+                    if (genero == "" || validaciones.valida(genero, 1)) {
+                        if (genero == "") {
+                            JOptionPane.showMessageDialog(null, "Debe ingresar un genero");
+                        } else if (validaciones.valida(genero, 1)) {
+                            JOptionPane.showMessageDialog(null, "El genero debe contener solo letras");
+                        }
+                        valido = false;
+                    } else {
+                        valido = true;
+                    }
+                } while (!valido);
+                do {
+                    edad = JOptionPane.showInputDialog("*****Edicion de pacientes*****\n\n"
+                            + "Ingrese edad del paciente");
+                    if (edad == "" || !validaciones.valida(edad, 2)) {
+                        if (edad == "") {
+                            JOptionPane.showMessageDialog(null, "Debe ingresar un edad");
+                        } else if (!validaciones.valida(edad, 2)) {
+                            JOptionPane.showMessageDialog(null, "La edad debe contener solo numeros");
+                        }
+                        valido = false;
+                    } else {
+                        valido = true;
+                    }
+                } while (!valido);
+                medicos.get(index).setNombres(nombre);
+                medicos.get(index).setApellidos(apellidos);
+                medicos.get(index).getIdentificación();
+            }
+            JOptionPane.showMessageDialog(null, "Paciente modificado correctamente");
+        }
     }
 
     @Override
     public void eliminar() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }
