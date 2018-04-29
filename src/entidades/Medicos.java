@@ -10,10 +10,10 @@ package entidades;
  * @author luisd
  */
 public class Medicos {
-    private String identificación, nombres, apellidos , especialidad;
+    private String identificacion, nombres, apellidos , especialidad;
 
-    public Medicos(String identificación, String nombres, String apellidos, String especialidad) {
-        this.identificación = identificación;
+    public Medicos(String identificacion, String nombres, String apellidos, String especialidad) {
+        this.identificacion = identificacion;
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.especialidad = especialidad;
@@ -21,11 +21,11 @@ public class Medicos {
     
     
     public String getIdentificación() {
-        return identificación;
+        return identificacion;
     }
 
     public void setIdentificación(String identificación) {
-        this.identificación = identificación;
+        this.identificacion = identificación;
     }
 
     public String getNombres() {
@@ -51,5 +51,7 @@ public class Medicos {
     public void setEspecialidad(String especialidad) {
         this.especialidad = especialidad;
     }
-     
+     public String getMedicoLista(){
+        return this.identificacion+". "+this.nombres+" "+this.apellidos+"\n" ;
+    }
 }

@@ -6,6 +6,7 @@
 package menu;
 
 import javax.swing.JOptionPane;
+import solicitudes.SolMedicos;
 import solicitudes.SolPacientes;
 
 /**
@@ -16,8 +17,10 @@ public class Menu {
 
     private static Menu instMenu;
     private SolPacientes solpac;
+    private SolMedicos solMed;
     private Menu() {
         solpac= new SolPacientes();
+        solMed= new SolMedicos();
     }
 
     public static Menu getInstMenu() {
@@ -88,19 +91,27 @@ public class Menu {
             switch (op2) {
                 case 1:
                     if(op1==1)
-                        solpac.registrar();                    
+                        solpac.registrar();
+                    else if(op1==2)
+                        solMed.registrar();
                     break;
                 case 2:
                     if(op1==1)
                         solpac.mostrar();
+                    else if(op1==2)
+                        solMed.mostrar();
                     break;
                 case 3:
                     if(op1==1)
                         solpac.modificar();
+                    else if(op1==2)
+                        solMed.modificar();
                     break;
                 case 4:
                     if(op1==1)
                         solpac.eliminar();
+                    else if(op1==2)
+                        solMed.eliminar();
                     break;
             }
             break;
