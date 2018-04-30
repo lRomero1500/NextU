@@ -10,7 +10,8 @@ package entidades;
  * @author luisd
  */
 public class Pacientes {
-    private String identificacion, nombres, apellidos,género;
+
+    private String identificacion, nombres, apellidos, género;
     private int edad;
 
     public Pacientes(String identificacion, String nombres, String apellidos, String género, int edad) {
@@ -19,8 +20,8 @@ public class Pacientes {
         this.apellidos = apellidos;
         this.género = género;
         this.edad = edad;
-    }   
-    
+    }
+
     public String getIdentificación() {
         return identificacion;
     }
@@ -60,9 +61,9 @@ public class Pacientes {
     public void setEdad(int edad) {
         this.edad = edad;
     }
-    
-    public String getPacienteLista(){
-        return this.identificacion+". "+this.nombres+" "+this.apellidos+"\n" ;
+
+    public String getPacienteLista() {
+        return this.identificacion + ". " + this.nombres + " " + this.apellidos + " " + this.género + "\n";
     }
 
 }
