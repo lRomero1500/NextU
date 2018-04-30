@@ -81,7 +81,8 @@ public class SolMedicos extends Solicitudes {
                 valido = true;
             }
 
-        } while (!valido);        
+        } while (!valido);
+
         medicos.add(new Medicos(String.valueOf(medicos.size() + 1), nombre, apellidos, especialidad));
         JOptionPane.showMessageDialog(null, "Medico creado correctamente");
 
@@ -94,9 +95,13 @@ public class SolMedicos extends Solicitudes {
 
     private String listar() {
         String lstpac = "";
-        for (Medicos medico : medicos) {
 
-            lstpac += medico.getMedicoLista();
+        if (medicos.size() > 0) {
+            for (Medicos medico : medicos) {
+                lstpac += medico.getMedicoLista();
+            }
+        } else {
+            return "No existen Medicos Creados";
 
         }
         return lstpac;
@@ -181,11 +186,12 @@ public class SolMedicos extends Solicitudes {
                         valido = true;
                     }
 
-                } while (!valido);                
+                } while (!valido);
+
                 medicos.get(index).setNombres(nombre);
                 medicos.get(index).setApellidos(apellidos);
                 medicos.get(index).setEspecialidad(especialidad);
-               
+
             }
             JOptionPane.showMessageDialog(null, "Medico modificado correctamente");
 

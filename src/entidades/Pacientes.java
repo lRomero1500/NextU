@@ -63,7 +63,12 @@ public class Pacientes {
     }
 
     public String getPacienteLista() {
-        return this.identificacion + ". " + this.nombres + " " + this.apellidos + " " + this.género + "\n";
+
+        return this.identificacion + ".\nNombres: " + this.nombres + "\nApellidos: " + this.apellidos + "\nGenero " + this.género + "\nEdad: "+this.edad+"\n";
+    }
+    public String getNombresApellidos(){
+        return this.nombres+" "+this.apellidos;
+
     }
 
 }
