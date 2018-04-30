@@ -53,6 +53,9 @@ public class Medicos {
     }
 
     public String getMedicoLista() {
-        return this.identificacion + ". " + this.nombres + " " + this.apellidos + " " + this.especialidad + "\n";
+        return this.identificacion + ".\nNombres: " + this.nombres + "\nApellidos: " + this.apellidos + "\nEspecialidad: " + this.especialidad + "\n";
+    }
+    public String getNombresApellidos(){
+        return this.nombres+" "+this.apellidos;
     }
 }

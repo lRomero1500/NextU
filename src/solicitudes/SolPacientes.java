@@ -102,9 +102,14 @@ public class SolPacientes extends Solicitudes {
 
     private String listar() {
         String lstpac = "";
-        for (Pacientes paciente : pacientes) {
-            lstpac += paciente.getPacienteLista();
+        if (pacientes.size() > 0) {
+            for (Pacientes paciente : pacientes) {
+                lstpac += paciente.getPacienteLista();
+            }
+        } else {
+            return "No Existen Pacientes Creados";
         }
+
         return lstpac;
     }
 

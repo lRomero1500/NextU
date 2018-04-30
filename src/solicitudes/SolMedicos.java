@@ -16,14 +16,15 @@ import validaciones.Validacion;
  *
  * @author luisd
  */
-public class SolMedicos extends Solicitudes{
+public class SolMedicos extends Solicitudes {
+
     public static List<Medicos> medicos = new ArrayList<>();
     private Validacion validaciones;
 
     public SolMedicos() {
         validaciones = new Validacion();
     }
-    
+
     @Override
     public void registrar() {
         boolean valido = false;
@@ -71,7 +72,7 @@ public class SolMedicos extends Solicitudes{
             } else {
                 valido = true;
             }
-        } while (!valido);        
+        } while (!valido);
         medicos.add(new Medicos(String.valueOf(medicos.size() + 1), nombre, apellidos, especialidad));
         JOptionPane.showMessageDialog(null, "Medico creado correctamente");
     }
@@ -83,8 +84,12 @@ public class SolMedicos extends Solicitudes{
 
     private String listar() {
         String lstpac = "";
-        for (Medicos medico : medicos) {
-            lstpac += medico.getMedicoLista();
+        if (medicos.size() > 0) {
+            for (Medicos medico : medicos) {
+                lstpac += medico.getMedicoLista();
+            }
+        } else {
+            return "No existen Medicos Creados";
         }
         return lstpac;
     }
@@ -157,11 +162,11 @@ public class SolMedicos extends Solicitudes{
                     } else {
                         valido = true;
                     }
-                } while (!valido);                
+                } while (!valido);
                 medicos.get(index).setNombres(nombre);
                 medicos.get(index).setApellidos(apellidos);
                 medicos.get(index).setEspecialidad(especialidad);
-               
+
             }
             JOptionPane.showMessageDialog(null, "Medico modificado correctamente");
         }
@@ -195,5 +200,5 @@ public class SolMedicos extends Solicitudes{
             JOptionPane.showMessageDialog(null, "Medico eliminado correctamente");
         }
     }
-    
+
 }
