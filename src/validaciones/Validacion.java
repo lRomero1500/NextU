@@ -5,6 +5,9 @@
  */
 package validaciones;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.regex.Pattern;
 
 /**
@@ -20,11 +23,19 @@ public class Validacion {
         boolean resp = false;
         switch (tipo) {
             case 1:
-                resp= Pattern.compile( "[^A-Za-z ]" ).matcher( txt ).find();
+                resp = Pattern.compile("[^A-Za-z ]").matcher(txt).find();
                 break;
             case 2:
-                resp=Pattern.compile("[0-9]").matcher(txt).find();
+                resp = Pattern.compile("[0-9]").matcher(txt).find();
                 break;
+            case 3:
+                SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
+                try {
+                    Date date = formatter.parse(txt);
+                    resp=false;
+                } catch (ParseException e) {
+                    return true;
+                }
         }
         return resp;
     }

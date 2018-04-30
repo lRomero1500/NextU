@@ -12,6 +12,13 @@ package entidades;
 public class HistClinic {
     private String código, fecha, idPaciente, idMedico , observaciones;
 
+    public HistClinic(String código, String fecha, String idPaciente,String idMedico, String observaciones) {
+        this.código = código;
+        this.fecha = fecha;
+        this.idPaciente = idPaciente;
+        this.idMedico=idMedico;
+        this.observaciones = observaciones;
+    }    
     public String getCódigo() {
         return código;
     }
