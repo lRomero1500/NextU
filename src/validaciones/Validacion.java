@@ -28,9 +28,10 @@ public class Validacion {
             case 2:
                 resp = Pattern.compile("[0-9]").matcher(txt).find();
                 break;
+
             case 3:                
                 try {
-                    Date date = new SimpleDateFormat("dd-MM-yyyy").parse(txt);;
+                    Date date = new SimpleDateFormat("dd-MM-yyyy").parse(txt);
                     resp=false;
                 } catch (ParseException e) {
                     return true;

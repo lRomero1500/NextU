@@ -21,8 +21,10 @@ public class SolHistClinic extends Solicitudes {
 
     public static List<HistClinic> histClinic = new ArrayList<>();
     private Validacion validaciones;
+
     private int index = 0;
     private String fecha, idPaciente, idMedico, observaciones;
+
 
     public SolHistClinic() {
         validaciones = new Validacion();
@@ -30,6 +32,7 @@ public class SolHistClinic extends Solicitudes {
 
     @Override
     public void registrar() {
+
         if (!(SolPacientes.pacientes.size() > 0) || !(SolMedicos.medicos.size() > 0)) {
             if(!(SolPacientes.pacientes.size() > 0)){
                 JOptionPane.showMessageDialog(null, "Debe registrar pacientes antes de crear historias");
@@ -98,7 +101,6 @@ public class SolHistClinic extends Solicitudes {
             histClinic.add(new HistClinic(String.valueOf(histClinic.size() + 1), fecha, idPaciente, idMedico, observaciones));
             JOptionPane.showMessageDialog(null, "Historia Clinica creada correctamente");
         }
-
     }
 
     public String listarPacientes() {
@@ -116,6 +118,7 @@ public class SolHistClinic extends Solicitudes {
         }
         return lstpac;
     }
+
 
     public String listarHistorias() {
         String lstpac = "";
@@ -144,6 +147,8 @@ public class SolHistClinic extends Solicitudes {
         return existe;
     }
 
+
+
     public boolean existePaciente(String idMedico) {
         int index = 0;
         boolean existe = false;
@@ -154,6 +159,7 @@ public class SolHistClinic extends Solicitudes {
             }
         }
         return existe;
+
     }
 
     public boolean existeHistoria(String codigo) {
@@ -165,6 +171,7 @@ public class SolHistClinic extends Solicitudes {
             }
         }
         return existe;
+
     }
 
     @Override
