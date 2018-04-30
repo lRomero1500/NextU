@@ -19,7 +19,7 @@ import validaciones.Validacion;
  */
 public class SolPacientes extends Solicitudes {
 
-    public List<Pacientes> pacientes = new ArrayList<>();
+    public static List<Pacientes> pacientes = new ArrayList<>();
     private Validacion validaciones;
 
     public SolPacientes() {
