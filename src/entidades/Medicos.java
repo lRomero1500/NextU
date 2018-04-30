@@ -54,4 +54,5 @@ public class Medicos {
      public String getMedicoLista(){
         return this.identificacion+". "+this.nombres+" "+this.apellidos+"\n" ;
     }
+
 }
