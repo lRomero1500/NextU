@@ -51,8 +51,8 @@ public class Medicos {
     public void setEspecialidad(String especialidad) {
         this.especialidad = especialidad;
     }
-    public String getPacienteLista(){
+     public String getMedicoLista(){
         return this.identificacion+". "+this.nombres+" "+this.apellidos+"\n" ;
     }
-     
+
 }
